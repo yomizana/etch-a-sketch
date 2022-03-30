@@ -1,9 +1,16 @@
+body {
+    margin: 0;
+}
+
 .grid-container {
     display: flex;
     flex-wrap: wrap;
+    height: 100vh;
+    width: auto;
 }
 
 .grid {
+    box-sizing: border-box;
     border: solid 1px black;
     height: 16px;
     width: 16px;
