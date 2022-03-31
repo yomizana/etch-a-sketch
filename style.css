@@ -1,12 +1,18 @@
 body {
     margin: 0;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid-container {
+    box-sizing: border-box;
+    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    height: 100vh;
-    width: auto;
+    height: 260px;
+    width: 260px;
 }
 
 .grid {
