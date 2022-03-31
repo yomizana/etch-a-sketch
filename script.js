@@ -14,3 +14,10 @@ let size = (containerHeight / gridHeight) * (containerWidth / gridWidth);
 for (let i = 0; i < size - 1; i++) {
     gridContainer.appendChild(grid.cloneNode(true));
 }
+
+let grids = document.querySelectorAll('.grid');
+grids.forEach(singleGrid => {
+    singleGrid.addEventListener('mouseover', () => {
+        singleGrid.style.backgroundColor = 'black';
+    });
+});
