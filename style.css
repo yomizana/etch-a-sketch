@@ -8,11 +8,12 @@ body {
 
 .grid-container {
     box-sizing: border-box;
-    border: 1px solid black;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    height: 240px;
-    width: 240px;
+    height: 256px;
+    width: 256px;
 }
 
 .grid {

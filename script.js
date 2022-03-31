@@ -6,5 +6,11 @@ gridContainer.appendChild(grid);
 
 let containerHeight = gridContainer.offsetHeight;
 let containerWidth = gridContainer.offsetWidth;
+let gridHeight = grid.offsetHeight;
+let gridWidth = grid.offsetWidth;
 
-console.log (containerHeight, containerWidth);
+let size = (containerHeight / gridHeight) * (containerWidth / gridWidth);
+
+for (let i = 0; i < size - 1; i++) {
+    gridContainer.appendChild(grid.cloneNode(true));
+}
