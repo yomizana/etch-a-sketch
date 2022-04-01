@@ -1,19 +1,9 @@
+const defaultSize = 16;
 const gridContainer = document.querySelector('.grid-container');
-const grid = document.createElement('div');
+const containerHeight = gridContainer.offsetHeight;
+const containerWidth = gridContainer.offsetWidth;
 
-grid.classList.add('grid');
-gridContainer.appendChild(grid);
-
-let containerHeight = gridContainer.offsetHeight;
-let containerWidth = gridContainer.offsetWidth;
-let gridHeight = grid.offsetHeight;
-let gridWidth = grid.offsetWidth;
-
-let size = (containerHeight / gridHeight) * (containerWidth / gridWidth);
-
-for (let i = 0; i < size - 1; i++) {
-    gridContainer.appendChild(grid.cloneNode(true));
-}
+createGrid(defaultSize);
 
 let grids = document.querySelectorAll('.grid');
 grids.forEach(singleGrid => {
@@ -22,9 +12,12 @@ grids.forEach(singleGrid => {
     });
 });
 
-const changeGrid = document.querySelector('button');
-changeGrid.addEventListener('click', () => {
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+    let input = prompt('Enter an integer', '');
+
     removeGrid();
+    createGrid(input);
 });
 
 function removeGrid() {
@@ -32,5 +25,23 @@ function removeGrid() {
     while (child) {
         gridContainer.removeChild(child);
         child = gridContainer.lastElementChild;
+    }
+}
+
+function createGrid(num) {
+    let gridSize = num ** 2;
+    let grid = document.createElement('div');
+    grid.classList.add('grid');
+
+    grid.style.height = `${containerHeight / num}px`;
+    grid.style.width = `${containerWidth / num}px`;
+
+    gridContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${num}, 1fr)`;
+
+    gridContainer.appendChild(grid);
+
+    for (let i = 0; i < gridSize - 1; i++) {
+        gridContainer.appendChild(grid.cloneNode(true));
     }
 }
