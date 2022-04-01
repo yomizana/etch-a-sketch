@@ -22,16 +22,19 @@ button.addEventListener('click', () => {
 
 function removeGrid() {
     let child = gridContainer.lastElementChild;
+
     while (child) {
         gridContainer.removeChild(child);
         child = gridContainer.lastElementChild;
     }
+
 }
 
 function createGrid(num) {
-    let gridSize = num ** 2;
     let grid = document.createElement('div');
     grid.classList.add('grid');
+
+    let gridSize = num ** 2;
 
     grid.style.height = `${containerHeight / num}px`;
     grid.style.width = `${containerWidth / num}px`;
