@@ -21,3 +21,16 @@ grids.forEach(singleGrid => {
         singleGrid.style.backgroundColor = 'black';
     });
 });
+
+const changeGrid = document.querySelector('button');
+changeGrid.addEventListener('click', () => {
+    removeGrid();
+});
+
+function removeGrid() {
+    let child = gridContainer.lastElementChild;
+    while (child) {
+        gridContainer.removeChild(child);
+        child = gridContainer.lastElementChild;
+    }
+}
