@@ -1,7 +1,5 @@
 const defaultSize = 16;
 const gridContainer = document.querySelector('.grid-container');
-const containerHeight = gridContainer.offsetHeight;
-const containerWidth = gridContainer.offsetWidth;
 
 createGrid(defaultSize);
 
@@ -37,6 +35,9 @@ function removeGrid() {
 }
 
 function createGrid(num) {
+    const containerHeight = gridContainer.offsetHeight;
+    const containerWidth = gridContainer.offsetWidth;
+
     let grid = document.createElement('div');
     grid.classList.add('grid');
 
