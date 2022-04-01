@@ -12,11 +12,27 @@ gridContainer.addEventListener('mouseenter', () => {
 
 const button = document.querySelector('button');
 button.addEventListener('click', () => {
-    let input = prompt('Enter an integer', '');
+    let input = parseInt(prompt('Enter an integer', ''));
 
-    removeGrid();
     createGrid(input);
 });
+
+function validateInput(input) {
+    const notANumber = 'Invalid input. Enter a number.';
+    const tooHigh = 'Enter a number no higher than 100.';
+
+    if (isNaN(input)) {
+        alert(notANumber);
+        return false;
+    }
+
+    if (input > 100) {
+        alert(tooHigh);
+        return false;
+    }
+
+    return true;
+}
 
 function hover(child) {
     child.addEventListener('mouseenter', () => {
@@ -35,6 +51,10 @@ function removeGrid() {
 }
 
 function createGrid(num) {
+    if (!validateInput(num)) return;
+
+    removeGrid();
+
     const containerHeight = gridContainer.offsetHeight;
     const containerWidth = gridContainer.offsetWidth;
 
