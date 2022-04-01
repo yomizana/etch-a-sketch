@@ -5,11 +5,11 @@ const containerWidth = gridContainer.offsetWidth;
 
 createGrid(defaultSize);
 
-let grids = document.querySelectorAll('.grid');
-grids.forEach(singleGrid => {
-    singleGrid.addEventListener('mouseover', () => {
-        singleGrid.style.backgroundColor = 'black';
-    });
+gridContainer.addEventListener('mouseenter', () => {
+    let children = gridContainer.childNodes;
+
+    children.forEach(child => hover(child));
+
 });
 
 const button = document.querySelector('button');
@@ -19,6 +19,12 @@ button.addEventListener('click', () => {
     removeGrid();
     createGrid(input);
 });
+
+function hover(child) {
+    child.addEventListener('mouseenter', () => {
+        child.style.backgroundColor = 'black';
+    });
+}
 
 function removeGrid() {
     let child = gridContainer.lastElementChild;
