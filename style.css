@@ -15,9 +15,8 @@ button {
 .grid-container {
     box-sizing: border-box;
     display: grid;
-    border: 1px solid black;
-    height: 256px;
-    width: 256px;
+    height: 600px;
+    width: 600px;
 }
 
 .square {
