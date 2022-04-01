@@ -38,20 +38,20 @@ function createGrid(num) {
     const containerHeight = gridContainer.offsetHeight;
     const containerWidth = gridContainer.offsetWidth;
 
-    let grid = document.createElement('div');
-    grid.classList.add('grid');
+    let square = document.createElement('div');
+    square.classList.add('square');
 
-    let gridSize = num ** 2;
+    let squareSize = num ** 2;
 
-    grid.style.height = `${containerHeight / num}px`;
-    grid.style.width = `${containerWidth / num}px`;
+    square.style.height = `${containerHeight / num}px`;
+    square.style.width = `${containerWidth / num}px`;
 
     gridContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${num}, 1fr)`;
 
-    gridContainer.appendChild(grid);
+    gridContainer.appendChild(square);
 
-    for (let i = 0; i < gridSize - 1; i++) {
-        gridContainer.appendChild(grid.cloneNode(true));
+    for (let i = 0; i < squareSize - 1; i++) {
+        gridContainer.appendChild(square.cloneNode(true));
     }
 }
