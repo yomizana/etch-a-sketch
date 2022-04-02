@@ -33,6 +33,7 @@ h2 {
 }
 
 button {
+    background-color: white;
     padding: 10px;
     height: 80px;
     width: 80px;
