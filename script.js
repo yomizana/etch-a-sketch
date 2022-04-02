@@ -4,6 +4,7 @@ const body = document.body;
 
 let mouseDown = false;
 let rainbow = false;
+let eraser = false;
 
 createGrid(defaultSize);
 
@@ -26,20 +27,38 @@ gridContainer.addEventListener('mouseenter', () => {
 
 function hover(child) {
     child.addEventListener('mousemove', () => {
-        if (mouseDown && rainbow) {
+        if (mouseDown && eraser) {
+            child.style.backgroundColor = 'white';
+        } else if (mouseDown && rainbow) {
             child.style.backgroundColor = randomRGB();
-        }
-        else if (mouseDown) {
+        } else if (mouseDown) {
             child.style.backgroundColor = 'black';
         }
     });
 }
 
-const buttonInput = document.querySelector('button');
-buttonInput.addEventListener('click', () => {
-    let input = parseInt(prompt('Enter an integer', ''));
+let counter = 1;
 
-    createGrid(input);
+const buttonGridSize = document.querySelector('.grid-size');
+buttonGridSize.addEventListener('click', () => {
+    const sizeOptions = [8, 16, 32, 48, 64];
+
+    if (counter >= sizeOptions.length - 1)
+    {
+
+        counter = 0;
+
+    } else {
+
+        counter++;
+
+    }
+
+    console.log(counter);
+
+    buttonGridSize.textContent = sizeOptions[counter];
+
+    createGrid(sizeOptions[counter]);
 });
 
 function createGrid(num) {
@@ -110,10 +129,10 @@ buttonRainbow.addEventListener('click', () => {
 
     if (!rainbow) {
         rainbow = true;
-        buttonRainbow.style.backgroundColor = 'yellow';
+        buttonRainbow.style.backgroundColor = 'black';
     } else {
         rainbow = false;
-        buttonRainbow.style.backgroundColor = 'white';
+        buttonRainbow.style.backgroundColor = 'darkslategray';
     }
 });
 
@@ -124,3 +143,15 @@ function randomRGB() {
 
     return `rgb(${red}, ${green}, ${blue})`;
 }
+
+const buttonEraser = document.querySelector('.eraser');
+buttonEraser.addEventListener('click', () => {
+
+    if (!eraser) {
+        eraser = true;
+        buttonEraser.style.backgroundColor = 'black';
+    } else {
+        eraser = false;
+        buttonEraser.style.backgroundColor = 'darkslategray';
+    }
+});
