@@ -77,7 +77,7 @@ function createGrid(num) {
     square.setAttribute('draggable', false);
     square.classList.add('square');
 
-    let squareSize = num ** 2;
+    let squareQuantity = num ** 2;
 
     square.style.height = `${containerHeight / num}px`;
     square.style.width = `${containerWidth / num}px`;
@@ -87,7 +87,7 @@ function createGrid(num) {
 
     gridContainer.appendChild(square);
 
-    for (let i = 0; i < squareSize - 1; i++) {
+    for (let i = 0; i < squareQuantity - 1; i++) {
         gridContainer.appendChild(square.cloneNode(true));
     }
 }
