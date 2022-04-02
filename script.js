@@ -91,3 +91,14 @@ function removeGrid() {
     }
 
 }
+
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', () => {
+    let children = gridContainer.childNodes;
+
+    children.forEach(child => {
+        child.style.backgroundColor = 'white';
+    });
+    
+});
+
