@@ -10,42 +10,18 @@ body.addEventListener('mousedown', (e) => bodyEventHandler(e));
 body.addEventListener('mouseup', (e) => bodyEventHandler(e));
 body.addEventListener('dragstart', (e) => bodyEventHandler(e));
 
-gridContainer.addEventListener('mouseenter', () => {
-
-    let children = gridContainer.childNodes;
-    children.forEach(child => hover(child));
-
-});
-
-const button = document.querySelector('button');
-button.addEventListener('click', () => {
-    let input = parseInt(prompt('Enter an integer', ''));
-
-    createGrid(input);
-});
-
 function bodyEventHandler(e) {
     if (e.type === 'dragstart') e.preventDefault();
     if (e.type === 'mousedown') mouseDown = true;
     if (e.type === 'mouseup') mouseDown = false;
 }
 
-function validateInput(input) {
-    const notANumber = 'Invalid input. Enter a number.';
-    const tooHigh = 'Enter a number no higher than 100.';
+gridContainer.addEventListener('mouseenter', () => {
 
-    if (isNaN(input)) {
-        alert(notANumber);
-        return false;
-    }
+    let children = gridContainer.childNodes;
+    children.forEach(child => hover(child));
 
-    if (input > 100) {
-        alert(tooHigh);
-        return false;
-    }
-
-    return true;
-}
+});
 
 function hover(child) {
     child.addEventListener('mousemove', () => {
@@ -55,15 +31,12 @@ function hover(child) {
     });
 }
 
-function removeGrid() {
-    let child = gridContainer.lastElementChild;
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+    let input = parseInt(prompt('Enter an integer', ''));
 
-    while (child) {
-        gridContainer.removeChild(child);
-        child = gridContainer.lastElementChild;
-    }
-
-}
+    createGrid(input);
+});
 
 function createGrid(num) {
     if (!validateInput(num)) return;
@@ -90,4 +63,31 @@ function createGrid(num) {
     for (let i = 0; i < squareQuantity - 1; i++) {
         gridContainer.appendChild(square.cloneNode(true));
     }
+}
+
+function validateInput(input) {
+    const notANumber = 'Invalid input. Enter a number.';
+    const tooHigh = 'Enter a number no higher than 100.';
+
+    if (isNaN(input)) {
+        alert(notANumber);
+        return false;
+    }
+
+    if (input > 100) {
+        alert(tooHigh);
+        return false;
+    }
+
+    return true;
+}
+
+function removeGrid() {
+    let child = gridContainer.lastElementChild;
+
+    while (child) {
+        gridContainer.removeChild(child);
+        child = gridContainer.lastElementChild;
+    }
+
 }
