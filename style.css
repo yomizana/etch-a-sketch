@@ -1,23 +1,25 @@
 body {
     margin: 0;
     height: 100vh;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
 .page-wrapper {
+    border: 8px solid black;
     background-color: grey;
     display: grid;
     padding: 25px;
     gap: 25px;
     grid-template-areas:
         "header header header"
-        "sidebar content content"
+        "sidebar content content";
 }
 
 h2 {
+    margin: 0;
     grid-area: header;
     text-align: center;
 }
@@ -25,6 +27,8 @@ h2 {
 .left-controls {
     grid-area: sidebar;
     display: flex;
+    gap: 25px;
+    justify-content: center;
     flex-direction: column;
 }
 
