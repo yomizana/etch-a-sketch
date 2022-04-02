@@ -1,11 +1,18 @@
 const defaultSize = 16;
 const gridContainer = document.querySelector('.grid-container');
+const body = document.body;
+
+let mouseDown = false;
 
 createGrid(defaultSize);
 
-gridContainer.addEventListener('mouseenter', () => {
-    let children = gridContainer.childNodes;
+body.addEventListener('mousedown', (e) => bodyEventHandler(e));
+body.addEventListener('mouseup', (e) => bodyEventHandler(e));
+body.addEventListener('dragstart', (e) => bodyEventHandler(e));
 
+gridContainer.addEventListener('mouseenter', () => {
+
+    let children = gridContainer.childNodes;
     children.forEach(child => hover(child));
 
 });
@@ -16,6 +23,12 @@ button.addEventListener('click', () => {
 
     createGrid(input);
 });
+
+function bodyEventHandler(e) {
+    if (e.type === 'dragstart') e.preventDefault();
+    if (e.type === 'mousedown') mouseDown = true;
+    if (e.type === 'mouseup') mouseDown = false;
+}
 
 function validateInput(input) {
     const notANumber = 'Invalid input. Enter a number.';
@@ -35,8 +48,10 @@ function validateInput(input) {
 }
 
 function hover(child) {
-    child.addEventListener('mouseenter', () => {
-        child.style.backgroundColor = 'black';
+    child.addEventListener('mousemove', () => {
+        if (mouseDown) {
+            child.style.backgroundColor = 'black';
+        } 
     });
 }
 
@@ -59,6 +74,7 @@ function createGrid(num) {
     const containerWidth = gridContainer.offsetWidth;
 
     let square = document.createElement('div');
+    square.setAttribute('draggable', false);
     square.classList.add('square');
 
     let squareSize = num ** 2;
