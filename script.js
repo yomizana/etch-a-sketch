@@ -47,7 +47,6 @@ function createGrid(num) {
     const containerWidth = gridContainer.offsetWidth;
 
     let square = document.createElement('div');
-    square.setAttribute('draggable', false);
     square.classList.add('square');
 
     let squareQuantity = num ** 2;
@@ -99,6 +98,6 @@ clear.addEventListener('click', () => {
     children.forEach(child => {
         child.style.backgroundColor = 'white';
     });
-    
+
 });
 
