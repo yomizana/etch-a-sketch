@@ -3,6 +3,7 @@ const gridContainer = document.querySelector('.grid-container');
 const body = document.body;
 
 let mouseDown = false;
+let rainbow = false;
 
 createGrid(defaultSize);
 
@@ -25,9 +26,12 @@ gridContainer.addEventListener('mouseenter', () => {
 
 function hover(child) {
     child.addEventListener('mousemove', () => {
-        if (mouseDown) {
+        if (mouseDown && rainbow) {
+            child.style.backgroundColor = randomRGB();
+        }
+        else if (mouseDown) {
             child.style.backgroundColor = 'black';
-        } 
+        }
     });
 }
 
@@ -101,3 +105,22 @@ buttonClear.addEventListener('click', () => {
 
 });
 
+const buttonRainbow = document.querySelector('.rainbow');
+buttonRainbow.addEventListener('click', () => {
+
+    if (!rainbow) {
+        rainbow = true;
+        buttonRainbow.style.backgroundColor = 'yellow';
+    } else {
+        rainbow = false;
+        buttonRainbow.style.backgroundColor = 'white';
+    }
+});
+
+function randomRGB() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    return `rgb(${red}, ${green}, ${blue})`;
+}
