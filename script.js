@@ -31,8 +31,8 @@ function hover(child) {
     });
 }
 
-const button = document.querySelector('button');
-button.addEventListener('click', () => {
+const buttonInput = document.querySelector('button');
+buttonInput.addEventListener('click', () => {
     let input = parseInt(prompt('Enter an integer', ''));
 
     createGrid(input);
@@ -91,8 +91,8 @@ function removeGrid() {
 
 }
 
-const clear = document.querySelector('.clear');
-clear.addEventListener('click', () => {
+const buttonClear = document.querySelector('.clear');
+buttonClear.addEventListener('click', () => {
     let children = gridContainer.childNodes;
 
     children.forEach(child => {
