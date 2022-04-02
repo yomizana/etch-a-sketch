@@ -1,26 +1,31 @@
 body {
+    background-color: darkslategray;
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .page-wrapper {
-    border: 8px solid black;
-    background-color: grey;
+    border: 5px solid black;
+    border-radius: 10px;
+    background-color: teal;
     display: grid;
     padding: 25px;
     gap: 25px;
     grid-template-areas:
         "header header header"
-        "sidebar content content";
+        "sidebar content content"
+        "footer footer footer";
 }
 
 h2 {
     margin: 0;
     grid-area: header;
+    color: gold;
     text-align: center;
 }
 
@@ -33,11 +38,19 @@ h2 {
 }
 
 button {
-    background-color: white;
+    background-color: darkslategray;
+    border-style: none;
+    color: gold;
+    font-size: 16px;
+    font-weight: bold;
     padding: 10px;
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
     border-radius: 50%;
+}
+
+button:hover {
+    background-color: rgba(47, 79, 79, 0.657);
 }
 
 .grid-container {
@@ -50,6 +63,22 @@ button {
 
 .square {
     box-sizing: border-box;
-    border: solid 1px black;
+    border: solid 1px rgba(0, 0, 0, 0.3);
     background-color: white;
+}
+
+p {
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    grid-area: footer;
+}
+
+p a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.733);
+}
+
+p a:hover {
+    text-decoration: underline;
 }
